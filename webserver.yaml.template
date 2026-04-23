@@ -5,10 +5,10 @@ metadata:
     app: webserver
   name: webserver
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: webserver
-  replicas: 3
   template:
     metadata:
       labels:
@@ -19,3 +19,5 @@ spec:
         image: ${IMAGE_NAME}
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
